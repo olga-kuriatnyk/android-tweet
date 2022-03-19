@@ -18,7 +18,6 @@ class ComposeActivity : AppCompatActivity() {
 
     lateinit var etCompose: EditText
     lateinit var btnTweet: Button
-    lateinit var tvDisplay: TextView
 
     lateinit var client: TwitterClient
 
@@ -28,29 +27,12 @@ class ComposeActivity : AppCompatActivity() {
 
         etCompose = findViewById(R.id.etTweetCompose) as EditText
         btnTweet = findViewById(R.id.btnTweet)
-     //   tvDisplay = findViewById(R.id.tvDisplay)
+       // tvDisplay = findViewById(R.id.tvDisplay)
 
         client = TwitterApplication.getRestClient(this)
 
-   /*     etCompose.addTextChangedListener(object: TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                TODO("Not yet implemented")
-            }
-
-            override fun afterTextChanged(s: Editable) {
-                TODO("Not yet implemented")
-                tvDisplay.setText(s.toString())
-            }
-
-        })
-*/
         // Handling the user's click on the tweet button
         btnTweet.setOnClickListener {
-
             // Grab the content of edittext (etCompose)
             val tweetContent = etCompose.text.toString()
 
@@ -63,7 +45,7 @@ class ComposeActivity : AppCompatActivity() {
                 if (tweetContent.length > 280) {
                     Toast.makeText(
                         this,
-                        "Tweet is too long! Limit is 140 characters",
+                        "Tweet is too long! Limit is 280 characters",
                         Toast.LENGTH_SHORT
                     )
                         .show()
@@ -99,6 +81,7 @@ class ComposeActivity : AppCompatActivity() {
 
     companion object {
         val TAG = "ComposeActivity"
+
     }
 
 }
